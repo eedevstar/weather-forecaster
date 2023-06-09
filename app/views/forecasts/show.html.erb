@@ -1,0 +1,43 @@
+<%= render "shared/flash" %>
+
+<%= form_with(method: 'get', local: true) do %>
+	<%= label :address, "What is your address?", class: "form-label" %>
+	<div class="input-group">
+		<%= text_field_tag(:address, @address || @address_default, size: 70, placeholder: "Type address", class: "form-control") %>
+		<%= submit_tag("Lookup", class: "btn btn-primary") %>
+	</div>
+<% end %>
+<% if defined?(@weather) %>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>
+					<img src="http://openweathermap.org/img/wn/<%= @weather.icon %>@2x.png">
+					<%= @weather.temperature %> ℃
+					<small class="text-muted"><%= @weather.description %></small>
+				</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				Minimum Temperature: <small class="text-muted"><%= @weather.temperature_min %> ℃</small>
+			</div>
+			<div class="col">
+				Maximum Temperature: <small class="text-muted"><%= @weather.temperature_max %> ℃</small>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				Humidity: <small class="text-muted"><%= @weather.humidity %>%</small>
+			</div>
+			<div class="col">
+				Pressure: <small class="text-muted"><%= @weather.pressure %> millibars</small>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				Is it from the cache? <small class="text-muted"><%= @weather_cache_exist %></small>
+			</div>
+		</div>
+	</div>
+<% end %>
