@@ -2,7 +2,7 @@
 
 ![App Image](public/my-screenshot.png)
 
-## Coding Assignment - Requirements
+## Requirements
 
 * Must be done in Ruby on Rails
 * Accept an address as input
